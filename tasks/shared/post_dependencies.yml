@@ -9,26 +9,11 @@
     nginx_vhosts:
     - default: yes
       type: proxy
-      server_name:
-      - "www.example.org"
+      server_name: {{ [graylog_hostname] + ["graylog.*", "syslog.*"] }}
       locations:
       - path: /
-        pass: https://127.0.0.1:3000
+        pass: https://127.0.0.1:9000
+        custom_options:
+        - "proxy_set_header X-Graylog-Server-URL https://$server_name/"
       
-
-- name: uniqconsulting.mariadb
-  include_role:
-    name: uniqconsulting.mariadb
-  vars:
-    mariadb_root_password: ""
-    mariadb_secure_installation: yes
-    mariadb_databases:
-    - name: "DBNAME"
-    mariadb_users_create:
-      - name: "DBUSER"
-        password: "DBPASS"
-        privs:
-        - "DBNAME.*:ALL"
-        hosts: 
-        - localhost
 ...

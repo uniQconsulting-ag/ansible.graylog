@@ -3,7 +3,7 @@
 # Variables
 role_name=uniqconsulting.graylog
 role_github_name=ansible.graylog
-role_displayname=Graylog Server
+role_displayname="Graylog Server"
 
 # Check if installer has yet been run
 if [ -f "/etc/ansible/projects/uqcSetup/.INSTALLED" ]; then

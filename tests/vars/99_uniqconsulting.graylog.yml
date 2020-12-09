@@ -1,0 +1,62 @@
+---
+#################
+#    GRAYLOG
+#################
+
+# Elasticsearch Options
+elasticsearch_jvm_heap: "{{ (ansible_memtotal_mb/2-1024)|round|int }}m" # default: Give it half the memory minus 1G
+
+# Base Settings
+graylog_hostname: "servername.domain.local"
+graylog_root_email: "graylogadmin@example.com"
+graylog_admin_password: "graylog"
+graylog_root_timezone: "Europe/Zurich"
+graylog_install_enterprise_plugin: false
+
+# Mailing
+graylog_transport_email_enabled: false
+graylog_transport_email_hostname: mail.example.com
+graylog_transport_email_port: 587
+graylog_transport_email_use_auth: false
+graylog_transport_email_use_tls: true
+graylog_transport_email_use_ssl: false
+graylog_transport_email_auth_username: "you@example.com"
+graylog_transport_email_auth_password:  "secret"
+graylog_transport_email_subject_prefix: "[graylog]"
+graylog_transport_email_from_email: "graylog@example.com"
+
+# Graylog Memory
+graylog_jvm_graylog_heapmax: 2g
+graylog_jvm_graylog_heap: 1g
+
+#################
+#   OS Basic
+#################
+
+setup_mail: "{{ graylog_transport_email_enabled }}"
+mail_relay_host: "{{ graylog_transport_email_hostname }}"
+
+sysadmin_email: 'support@example.org'
+mail_local_sender_domain: 'example.org'
+
+setup_syslog_forwarding: true
+syslog_remote_host: '@127.0.0.1.514'
+
+setup_snmpd: false
+monitoring_host_ip: '192.168.1.10'
+snmp_community_name: 'MyCommunity'
+
+install_openvmtools: yes
+
+#################
+#    Firewall
+#################
+
+additional_open_ports: []
+# To add ports, change like this:
+# additional_open_ports:
+# - port: 10050
+#   protocol: tcp
+
+...
+
