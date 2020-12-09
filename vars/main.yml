@@ -41,11 +41,11 @@ role_ports:
 
 # Ports
 graylog_firewall_port_forwards:
-  - from: 514
-    to: 1514
+  - src_port: 514
+    dest_port: 1514
     protocol: udp
-  - from: 514
-    to: 1514
+  - src_port: 514
+    dest_port: 1514
     protocol: tcp
 
     
