@@ -41,6 +41,10 @@ clear
 # Create "trigger" file
 touch /etc/ansible/projects/uqcSetup/.INSTALLED
 
+# Cleanup
+rm -f /tmp/playbook.log
+rm -f /tmp/99_$role_name.yml
+
 # Done
 dialog --title "Setup - Done" --msgbox "
 We are all done. Thank you for installing $role_displayname." 8 30

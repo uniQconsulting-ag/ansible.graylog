@@ -56,7 +56,7 @@ graylog_repo_graylog_rpm: https://packages.graylog2.org/repo/packages/graylog-4.
 graylog_cluster_name: "graylog"
 
 # MAIL CONFIG
-graylog_transport_email_web_interface_url: "https://{{nginx_ssl_cert_host}}"
+graylog_transport_email_web_interface_url: "https://{{ graylog_hostname }}"
 
 
 # Packages
