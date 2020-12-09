@@ -75,6 +75,9 @@ graylog_packages_mongodb:
 graylog_packages_enterprise: 
 - graylog-enterprise-plugins
 
+graylog_default_alias:
+- graylog.*
+- syslog.*
 
 
 ...

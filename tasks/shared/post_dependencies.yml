@@ -9,7 +9,7 @@
     nginx_vhosts:
     - default: yes
       type: proxy
-      server_name: "{{ [graylog_hostname] + ["graylog.*", "syslog.*"] }}""
+      server_name: "{{ [graylog_hostname] + graylog_default_alias }}""
       locations:
       - path: /
         pass: https://127.0.0.1:9000
