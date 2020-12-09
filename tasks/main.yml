@@ -13,6 +13,7 @@
     loop_var: include_file_name 
   loop:
   - pre_systemcheck.yml
+  when: run_systemcheck
 
 - name: include pre-dependencies
   include_tasks: "include-file.yml"
