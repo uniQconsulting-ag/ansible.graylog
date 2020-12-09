@@ -12,7 +12,7 @@
       server_name: "{{ [graylog_hostname] + graylog_default_alias }}"
       locations:
       - path: /
-        pass: https://127.0.0.1:9000
+        pass: http://127.0.0.1:9000
         custom_options:
         - "proxy_set_header X-Graylog-Server-URL https://$server_name/"
       
