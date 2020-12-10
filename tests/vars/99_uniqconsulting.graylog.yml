@@ -33,18 +33,17 @@ graylog_jvm_graylog_heap: 1g
 #   OS Basic
 #################
 
-setup_mail: "{{ graylog_transport_email_enabled }}"
-mail_relay_host: "{{ graylog_transport_email_hostname }}"
+osbasic_mail: "{{ graylog_transport_email_enabled }}"
+osbasic_mail_relay_host: "{{ graylog_transport_email_hostname }}"
+osbasic_sysadmin_email: 'support@domain.ch'
+osbasic_sender_domain: 'domain.ch'
 
-sysadmin_email: 'support@example.org'
-mail_local_sender_domain: 'example.org'
+osbasic_syslog: true
+osbasic_syslog_remote_host: '@127.0.0.1.514'
 
-setup_syslog_forwarding: true
-syslog_remote_host: '@127.0.0.1.514'
-
-setup_snmpd: false
-monitoring_host_ip: '192.168.1.10'
-snmp_community_name: 'MyCommunity'
+osbasic_snmpd: false
+osbasic_snmp_sourceip: '192.168.1.10'
+osbasic_snmp_community_name: 'MyCommunity'
 
 install_openvmtools: yes
 

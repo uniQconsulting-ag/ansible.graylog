@@ -13,14 +13,12 @@
   include_role:
     name: uniqconsulting.os_basic
   vars:
-    setup_selinux: true
-    selinux_policy: disabled
-    setup_firewalld: false
-    setup_iptables: true
-    os_update: true
-    package_cleanup: true
-    package_upgrade: all
-    epel_repo: true
+    osbasic_selinux: true
+    osbasic_selinux_policy: disabled
+    osbasic_os_update: true
+    osbasic_package_cleanup: true
+    osbasic_package_upgrade: all
+    osbasic_epel: true
 
 - name: uniqconsulting.open_vm_tools
   include_role:
