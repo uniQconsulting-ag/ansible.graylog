@@ -39,7 +39,7 @@ osbasic_sysadmin_email: 'support@domain.ch'
 osbasic_sender_domain: 'domain.ch'
 
 osbasic_syslog: true
-osbasic_syslog_remote_host: '@127.0.0.1.514'
+osbasic_syslog_remote_host: '@127.0.0.1:514'
 
 osbasic_snmpd: false
 osbasic_snmp_sourceip: '192.168.1.10'
