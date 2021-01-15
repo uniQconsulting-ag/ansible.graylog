@@ -3,7 +3,7 @@
 - name: Check CPU
   fail:
     msg: This system has not enough vCPU
-  failed_when: ansible_processor_vcpus < systemcheck_cpus
+  failed_when: ansible_processor_vcpus <= systemcheck_cpus
 
 - name: Check Physical Memory
   fail:
