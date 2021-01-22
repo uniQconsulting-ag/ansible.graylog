@@ -16,17 +16,14 @@
   #    Graylog
   ##################
 
-  - name: get service facts
-    service_facts:
-
   - name: Check Services
-    debug:
-      msg: "systemctl --no-pager status {{ item }}" 
+    shell: "systemctl --no-pager status {{ item }} > /dev/null 2>&1" 
     register: error_code
     failed_when: error_code.rc != 0
+    changed_when: false
     ignore_errors: yes
     with_items: "{{ running_services }}"
-    
+
   - name: Get file status
     stat:
       path: "{{ item }}"
