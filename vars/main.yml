@@ -8,14 +8,6 @@ systemcheck_swap_memory: 2048 # In MB
 systemcheck_disk: 42949672960 # in bytes ; 40G
 systemcheck_cpus: 4
 
-# Role
-role_include_files: # add for example requirements.yml
-- repos.yml
-- java.yml
-- mongodb.yml
-- install.yml
-- config.yml
-- uqccheck.yml
 
 # FIREWALL CONFIG
 role_ports:

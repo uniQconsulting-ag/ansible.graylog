@@ -19,14 +19,14 @@
   - name: get service facts
     service_facts:
 
-  - name: Check Graylog Services
+  - name: Check Services
     debug:
-      msg: "{{ ansible_facts.services[item] }}" 
-    failed_when: ansible_facts.services[item].state != "running" or ansible_facts.services[item].status != "enabled"
-    when: ansible_facts.services[item].state != "running" or ansible_facts.services[item].status != "enabled"
+      msg: "systemctl --no-pager status {{ item }}" 
+    register: error_code
+    failed_when: error_code.rc != 0
     ignore_errors: yes
     with_items: "{{ running_services }}"
-
+    
   - name: Get file status
     stat:
       path: "{{ item }}"
