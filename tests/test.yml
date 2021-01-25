@@ -20,5 +20,5 @@
       cp roles/{{ role_name }}/tests/$role_install_name install_1_appliance.yml
 
   - name: run playbook
-    include_playbook: install_1_appliance.yml
+    import_playbook: install_1_appliance.yml
 ...
