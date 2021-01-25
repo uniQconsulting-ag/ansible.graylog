@@ -5,10 +5,11 @@
   vars:
     github_repo: git@github.com:melvin-suter/ansible.graylog.git
     role_name: uniqconsulting.graylog
+    setup_1_url: https://raw.githubusercontent.com/melvin-suter/ansible.graylog/staging/setup_1.sh
   tasks:
   - name: prepare setup
     shell: |
-      curl -s https://raw.githubusercontent.com/uniQconsulting-ag/$role_github_name/master/setup_1.sh > /tmp/setup_1.sh
+      curl -s {{ setup_1_url }} > /tmp/setup_1.sh
       chmod +x /tmp/setup_1.sh
       /tmp/setup_1.sh
   
