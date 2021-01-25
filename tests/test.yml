@@ -15,8 +15,9 @@
   
   - name: prepare testing branch
     shell: |
-      rm -rf /etc/ansible/projects/uqcSetup/roles/{{ role_name }}
-      git clone --branch staging {{ github_repo }} /etc/ansible/projects/uqcSetup/roles/{{ role_name }}
+      cd /etc/ansible/projects/uqcSetup/roles
+      rm -rf roles/{{ role_name }}
+      git clone --branch staging {{ github_repo }} roles/{{ role_name }}
       cp roles/{{ role_name }}/tests/vars/99_{{ role_name }}.yml vars/
       cp roles/{{ role_name }}/tests/$role_install_name install_1_appliance.yml
 
