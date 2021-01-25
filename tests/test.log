@@ -5,8 +5,11 @@ TASK [Gathering Facts] *********************************************************
 ok: [localhost]
 
 TASK [prepare setup] ***********************************************************
-fatal: [localhost]: FAILED! => {"changed": true, "cmd": "curl -s https://raw.githubusercontent.com/uniQconsulting-ag/$role_github_name/master/setup_1.sh > /tmp/setup_1.sh\nchmod +x /tmp/setup_1.sh\n/tmp/setup_1.sh\n", "delta": "0:00:00.052624", "end": "2021-01-25 11:14:15.383019", "msg": "non-zero return code", "rc": 1, "start": "2021-01-25 11:14:15.330395", "stderr": "/tmp/setup_1.sh: line 1: a: No such file or directory", "stderr_lines": ["/tmp/setup_1.sh: line 1: a: No such file or directory"], "stdout": "", "stdout_lines": []}
+changed: [localhost]
+
+TASK [prepare testing branch] **************************************************
+fatal: [localhost]: FAILED! => {"changed": true, "cmd": "rm -rf /etc/ansible/projects/uqcSetup/roles/uniqconsulting.graylog\ngit clone --branch staging git@github.com:melvin-suter/ansible.graylog.git /etc/ansible/projects/uqcSetup/roles/uniqconsulting.graylog\ncp roles/uniqconsulting.graylog/tests/vars/99_uniqconsulting.graylog.yml vars/\ncp roles/uniqconsulting.graylog/tests/$role_install_name install_1_appliance.yml\n", "delta": "0:00:01.193178", "end": "2021-01-25 11:19:30.624774", "msg": "non-zero return code", "rc": 1, "start": "2021-01-25 11:19:29.431596", "stderr": "Cloning into '/etc/ansible/projects/uqcSetup/roles/uniqconsulting.graylog'...\ncp: cannot stat 'roles/uniqconsulting.graylog/tests/vars/99_uniqconsulting.graylog.yml': No such file or directory\ncp: cannot stat 'roles/uniqconsulting.graylog/tests/': No such file or directory", "stderr_lines": ["Cloning into '/etc/ansible/projects/uqcSetup/roles/uniqconsulting.graylog'...", "cp: cannot stat 'roles/uniqconsulting.graylog/tests/vars/99_uniqconsulting.graylog.yml': No such file or directory", "cp: cannot stat 'roles/uniqconsulting.graylog/tests/': No such file or directory"], "stdout": "", "stdout_lines": []}
 
 PLAY RECAP *********************************************************************
-localhost                  : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+localhost                  : ok=2    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
 
