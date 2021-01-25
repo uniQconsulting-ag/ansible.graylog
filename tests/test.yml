@@ -25,6 +25,6 @@
   - name: run playbook
     shell: |
       cd /etc/ansible/projects/uqcSetup
-      ansible-playbook install_1_appliance.yml
+      ansible-playbook install_1_appliance.yml | tee -a /tmp/test_repo/tests/test_output.yml
   
 ...
