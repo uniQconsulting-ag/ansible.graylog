@@ -1,0 +1,12 @@
+
+PLAY [graylog test] ************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [prepare setup] ***********************************************************
+fatal: [localhost]: FAILED! => {"changed": true, "cmd": "curl -s https://raw.githubusercontent.com/uniQconsulting-ag/$role_github_name/master/setup_1.sh > /tmp/setup_1.sh\nchmod +x /tmp/setup_1.sh\n/tmp/setup_1.sh\n", "delta": "0:00:00.135580", "end": "2021-01-25 11:09:28.311635", "msg": "non-zero return code", "rc": 1, "start": "2021-01-25 11:09:28.176055", "stderr": "/tmp/setup_1.sh: line 1: a: No such file or directory", "stderr_lines": ["/tmp/setup_1.sh: line 1: a: No such file or directory"], "stdout": "", "stdout_lines": []}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
