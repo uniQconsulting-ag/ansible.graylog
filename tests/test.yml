@@ -19,6 +19,5 @@
       cp roles/{{ role_name }}/tests/vars/99_{{ role_name }}.yml vars/
       cp roles/{{ role_name }}/tests/$role_install_name install_1_appliance.yml
 
-  - name: run playbook
-    import_playbook: install_1_appliance.yml
+  - import_playbook: /etc/ansible/projects/uqcSetup/install_1_appliance.yml
 ...
