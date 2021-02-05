@@ -3,7 +3,7 @@
 # a playbook or a include.
 
 # Systemcheck
-systemcheck_physical_memory: 4096 # In MB
+systemcheck_physical_memory: 6144 # In MB
 systemcheck_swap_memory: 2048 # In MB
 systemcheck_disk: 42949672960 # in bytes ; 40G
 systemcheck_cpus: 4

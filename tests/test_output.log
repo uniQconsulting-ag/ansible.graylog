@@ -16,46 +16,6 @@ ok: [localhost]
 TASK [uniqconsulting.graylog : include global-vars] ****************************
 skipping: [localhost]
 
-TASK [uniqconsulting.graylog : include tasks] **********************************
-included: /etc/ansible/projects/uqcSetup/roles/uniqconsulting.graylog/tasks/include-file.yml for localhost
-
-TASK [include /etc/ansible/projects/uqcSetup/roles/uniqconsulting.graylog/tasks/shared/00_systemcheck.yml] ***
-included: /etc/ansible/projects/uqcSetup/roles/uniqconsulting.graylog/tasks/shared/00_systemcheck.yml for localhost
-
-TASK [uniqconsulting.graylog : Check CPU] **************************************
-ok: [localhost]
-
-TASK [uniqconsulting.graylog : Check Physical Memory] **************************
-ok: [localhost]
-
-TASK [uniqconsulting.graylog : Check Swap Memory] ******************************
-ok: [localhost]
-
-TASK [uniqconsulting.graylog : Check disk-size] ********************************
-ok: [localhost] => (item=/dev/mapper/cl-root)
-skipping: [localhost] => (item=/dev/vda1) 
-
-PLAY RECAP *********************************************************************
-localhost                  : ok=10   changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
-
-
-PLAY [graylog Setup] ***********************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [localhost]
-
-TASK [uniqconsulting.graylog : get role-vars stats] ****************************
-ok: [localhost]
-
-TASK [uniqconsulting.graylog : include role-vars] ******************************
-ok: [localhost]
-
-TASK [uniqconsulting.graylog : get global-vars stats] **************************
-ok: [localhost]
-
-TASK [uniqconsulting.graylog : include global-vars] ****************************
-skipping: [localhost]
-
 TASK [uniqconsulting.graylog : find all task files] ****************************
 changed: [localhost]
 
@@ -169,34 +129,34 @@ TASK [uniqconsulting.os_basic : include 60_mail.yml] ***************************
 included: /etc/ansible/projects/uqcSetup/roles/uniqconsulting.os_basic/tasks/shared/60_mail.yml for localhost
 
 TASK [uniqconsulting.os_basic : install packages for mail setup] ***************
-skipping: [localhost]
+changed: [localhost]
 
 TASK [uniqconsulting.os_basic : enable postfix] ********************************
-skipping: [localhost]
+changed: [localhost]
 
 TASK [uniqconsulting.os_basic : create main.cf] ********************************
-skipping: [localhost]
+changed: [localhost]
 
 TASK [uniqconsulting.os_basic : create canonical map] **************************
-skipping: [localhost]
+changed: [localhost]
 
 TASK [uniqconsulting.os_basic : create aliases] ********************************
-skipping: [localhost]
+changed: [localhost]
 
 TASK [uniqconsulting.os_basic : include 70_rsyslog.yml] ************************
 included: /etc/ansible/projects/uqcSetup/roles/uniqconsulting.os_basic/tasks/shared/70_rsyslog.yml for localhost
 
 TASK [uniqconsulting.os_basic : install packages for syslog] *******************
-changed: [localhost]
+skipping: [localhost]
 
 TASK [uniqconsulting.os_basic : enable rsyslog] ********************************
-ok: [localhost]
+skipping: [localhost]
 
 TASK [uniqconsulting.os_basic : check syslog forwarding] ***********************
-ok: [localhost]
+skipping: [localhost]
 
 TASK [uniqconsulting.os_basic : set rsyslog forwarding] ************************
-changed: [localhost]
+skipping: [localhost]
 
 TASK [uniqconsulting.os_basic : include 80_snmpd.yml] **************************
 included: /etc/ansible/projects/uqcSetup/roles/uniqconsulting.os_basic/tasks/shared/80_snmpd.yml for localhost
@@ -630,7 +590,13 @@ ok: [localhost]
 RUNNING HANDLER [uniqconsulting.graylog : restart graylog] *********************
 changed: [localhost]
 
-RUNNING HANDLER [uniqconsulting.os_basic : restart rsyslog] ********************
+RUNNING HANDLER [uniqconsulting.os_basic : newcanonical] ***********************
+changed: [localhost]
+
+RUNNING HANDLER [uniqconsulting.os_basic : newaliases] *************************
+changed: [localhost]
+
+RUNNING HANDLER [uniqconsulting.os_basic : restart postfix] ********************
 changed: [localhost]
 
 RUNNING HANDLER [uniqconsulting.firewall : restart iptables] *******************
@@ -646,5 +612,5 @@ RUNNING HANDLER [uniqconsulting.nginx : reload nginx] **************************
 changed: [localhost]
 
 PLAY RECAP *********************************************************************
-localhost                  : ok=169  changed=80   unreachable=0    failed=0    skipped=42   rescued=0    ignored=0   
+localhost                  : ok=172  changed=85   unreachable=0    failed=0    skipped=41   rescued=0    ignored=0   
 
