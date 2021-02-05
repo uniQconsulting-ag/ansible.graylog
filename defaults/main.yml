@@ -20,20 +20,22 @@ graylog_dashboard_widget_default_cache_time: 60s
 graylog_install_enterprise_plugin: false
 
 # --- JVM HEAP SIZE ---
-graylog_jvm_graylog_heapmax: 2g
-graylog_jvm_graylog_heap: 1g 
+graylog_jvm_graylog_heapmax: "{{ (ansible_memtotal_mb/2-1024)|round|int }}m"
+graylog_jvm_graylog_heap: "{{ (ansible_memtotal_mb/2-2048)|round|int }}m"
 
 # --- MAIL CONFIG ---
 graylog_transport_email_enabled: false
 graylog_transport_email_hostname: mail.example.com
-graylog_transport_email_port: 587
+graylog_transport_email_port: 25
 graylog_transport_email_use_auth: false
-graylog_transport_email_use_tls: true
+graylog_transport_email_use_tls: false
 graylog_transport_email_use_ssl: false
 graylog_transport_email_auth_username: "you@example.com"
 graylog_transport_email_auth_password:  "secret"
 graylog_transport_email_subject_prefix: "[graylog]"
 graylog_transport_email_from_email: "graylog@example.com"
 
-
+# --- OS Basic defaults ---
+osbasic_syslog: true
+osbasic_syslog_remote_host: '@127.0.0.1:514'
 ...

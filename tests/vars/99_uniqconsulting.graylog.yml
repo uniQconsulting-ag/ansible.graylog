@@ -4,30 +4,30 @@
 #################
 
 # Elasticsearch Options
-elasticsearch_jvm_heap: "{{ (ansible_memtotal_mb/2-1024)|round|int }}m" # default: Give it half the memory minus 1G
+# OPTIONAL: elasticsearch_jvm_heap: "{{ (ansible_memtotal_mb/2-1024)|round|int }}m" # default: Give it half the memory minus 1G
 
 # Base Settings
 graylog_hostname: "servername.domain.local"
 graylog_root_email: "graylogadmin@example.com"
 graylog_admin_password: "graylog"
-graylog_root_timezone: "Europe/Zurich"
-graylog_install_enterprise_plugin: false
+# OPTIONAL: graylog_root_timezone: "Europe/Zurich"
+# OPTIONAL: graylog_install_enterprise_plugin: false
 
 # Mailing
-graylog_transport_email_enabled: false
+graylog_transport_email_enabled: true
 graylog_transport_email_hostname: mail.example.com
-graylog_transport_email_port: 587
-graylog_transport_email_use_auth: false
-graylog_transport_email_use_tls: true
-graylog_transport_email_use_ssl: false
-graylog_transport_email_auth_username: "you@example.com"
-graylog_transport_email_auth_password:  "secret"
-graylog_transport_email_subject_prefix: "[graylog]"
 graylog_transport_email_from_email: "graylog@example.com"
+# OPTIONAL: graylog_transport_email_subject_prefix: "[graylog]"
+# OPTIONAL: graylog_transport_email_port: 25
+# OPTIONAL: graylog_transport_email_use_auth: false
+# OPTIONAL: graylog_transport_email_use_tls: false
+# OPTIONAL: graylog_transport_email_use_ssl: false
+# OPTIONAL: graylog_transport_email_auth_username: "you@example.com"
+# OPTIONAL: graylog_transport_email_auth_password:  "secret"
 
 # Graylog Memory
-graylog_jvm_graylog_heapmax: 2g
-graylog_jvm_graylog_heap: 1g
+# OPTIONAL: graylog_jvm_graylog_heapmax: "{{ (ansible_memtotal_mb/2-1024)|round|int }}m" # default: Give it half the memory minus 1G
+# OPTIONAL: graylog_jvm_graylog_heap: "{{ (ansible_memtotal_mb/2-2048)|round|int }}m" # default: Give it half the memory minus 2G
 
 #################
 #   OS Basic
@@ -38,21 +38,20 @@ osbasic_mail_relay_host: "{{ graylog_transport_email_hostname }}"
 osbasic_sysadmin_email: 'support@domain.ch'
 osbasic_sender_domain: 'domain.ch'
 
-osbasic_syslog: true
-osbasic_syslog_remote_host: '@127.0.0.1:514'
+# OPTIONAL: osbasic_syslog: true
+# OPTIONAL: osbasic_syslog_remote_host: '@127.0.0.1:514'
 
-osbasic_snmpd: false
-osbasic_snmp_sourceip: '192.168.1.10'
-osbasic_snmp_community_name: 'MyCommunity'
+# OPTIONAL: osbasic_snmpd: false
+# OPTIONAL: osbasic_snmp_sourceip: '192.168.1.10'
+# OPTIONAL: osbasic_snmp_community_name: 'MyCommunity'
 
-install_openvmtools: yes
+# OPTIONAL: install_openvmtools: yes
 
 #################
 #    Firewall
 #################
 
-additional_open_ports: []
-# To add ports, change like this:
+# OPTIONAL: To add ports, change like this:
 # additional_open_ports:
 # - port: 10050
 #   protocol: tcp
