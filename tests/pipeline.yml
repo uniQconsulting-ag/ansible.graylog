@@ -5,7 +5,9 @@
   roles:
     - ansible.kvm_pipeline
   vars:
+    vm_template: cos
     vm_ram: 8388608 # in KB 2G ; 8G = 8388608
     vm_cpu: 4
-    github_repo: "git@github.com:uniqconsulting-ag/ansible.graylog.git"
+    github_repo: ansible.graylog
+    github_owner: uniqconsulting-ag
 ...
