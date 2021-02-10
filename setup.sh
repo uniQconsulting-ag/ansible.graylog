@@ -15,7 +15,7 @@ if [ -f "/etc/ansible/projects/uqcSetup/.INSTALLED" ]; then
 fi
 
 # Setup dialog
-yum install -y -q dialog > /dev/null
+yum install -y -q dialog nano > /dev/null
 
 # Base Setup
 curl -s https://raw.githubusercontent.com/uniQconsulting-ag/$role_github_name/master/setup_1.sh > /tmp/setup_1.sh
