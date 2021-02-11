@@ -1,0 +1,18 @@
+---
+
+- name: set elasticsearch total_fields limit
+  shell: |
+    curl -XPUT localhost:9200/_template/graylog-total-field-fix  -H 'Content-Type: application/json' -d '
+    {
+      "order" : 1,
+      "index_patterns" : [
+        "graylog_*"
+      ],
+      "settings" : {
+        "index" : {
+          "mapping.total_fields.limit" : "10000"
+        }
+      }
+    }’
+
+...
