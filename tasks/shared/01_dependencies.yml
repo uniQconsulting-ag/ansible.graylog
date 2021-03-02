@@ -5,37 +5,21 @@
 
 # Change needed roles here
 - name: download dependencies from galaxy
-  shell: ansible-galaxy install uniqconsulting.os_basic uniqconsulting.open_vm_tools uniqconsulting.firewall uniqconsulting.nginx uniqconsulting.elasticsearch
-
-# Include all roles like this:
-
-- name: uniqconsulting.os_basic
-  include_role:
-    name: uniqconsulting.os_basic
-  vars:
-    osbasic_selinux: true
-    osbasic_selinux_policy: disabled
-    osbasic_os_update: true
-    osbasic_package_cleanup: true
-    osbasic_package_upgrade: all
-    osbasic_epel: true
-
-- name: uniqconsulting.open_vm_tools
-  include_role:
-    name: uniqconsulting.open_vm_tools
-  when: install_openvmtools
-      
+  shell: ansible-galaxy install {{ item }}
+  args:
+    creates: "{{ role_path }}/../{{ item }}"
+  with_items:
+  - uniqconsulting.firewall
+    
 - name: uniqconsulting.firewall
   include_role:
     name: uniqconsulting.firewall
   vars:
-    firewall_open_ports: "{{ role_ports + additional_open_ports }}"
-    firewall_local_port_forwarding: "{{ graylog_firewall_port_forwards }}"
+    firewall_open_ports:
+    - port: 9000
+      protocol: tcp
+      source: "{{ item }}"
+  with_items: "{{ graylog_clients }}"
 
-- name: uniqconsulting.elasticsearch
-  include_role:
-    name: uniqconsulting.elasticsearch
-  vars:
-    elasticsearch_cluster_name: "{{ graylog_cluster_name }}"
 
 ...

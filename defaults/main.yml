@@ -1,14 +1,4 @@
 ---
-# Here belong all variables, that can be changed by a vars-file,
-# a playbook or a include.
-
-run_systemcheck: yes
-install_openvmtools: yes
-
-# --- FIREWALL CONFIG ---
-additional_open_ports: []
-
-# Role Specific
 
 # --- GENERAL CONFIG ---
 graylog_hostname: "servername.domain.local"
@@ -18,6 +8,8 @@ graylog_root_timezone: "Europe/Zurich"
 graylog_allow_highlighting: true
 graylog_dashboard_widget_default_cache_time: 60s
 graylog_install_enterprise_plugin: false
+graylog_cluster_name: "graylog"
+graylog_clients: []
 
 # --- JVM HEAP SIZE ---
 graylog_jvm_graylog_heapmax: "{{ (ansible_memtotal_mb/2-1024)|round|int }}m"
@@ -35,7 +27,4 @@ graylog_transport_email_auth_password:  "secret"
 graylog_transport_email_subject_prefix: "[graylog]"
 graylog_transport_email_from_email: "graylog@example.com"
 
-# --- OS Basic defaults ---
-osbasic_syslog: true
-osbasic_syslog_remote_host: '@127.0.0.1:514'
 ...

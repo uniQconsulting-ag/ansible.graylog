@@ -15,20 +15,4 @@
     name: graylog-server
     state: restarted
 
-    
-- name: start mongod
-  service: 
-    name: mongod
-    state: started
-
-- name: stop mongod
-  service: 
-    name: mongod
-    state: stopped
-
-- name: restart mongod
-  service: 
-    name: mongod
-    state: restarted
-
 ...

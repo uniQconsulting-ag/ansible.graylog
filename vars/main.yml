@@ -44,9 +44,6 @@ graylog_firewall_port_forwards:
 # REPO CONFIG
 graylog_repo_graylog_rpm: https://packages.graylog2.org/repo/packages/graylog-4.0-repository_latest.rpm
 
-# GENERAL CONFIG
-graylog_cluster_name: "graylog"
-
 # MAIL CONFIG
 graylog_transport_email_web_interface_url: "https://{{ graylog_hostname }}"
 
@@ -60,16 +57,8 @@ graylog_packages:
 graylog_packages_java:
 - java-1.8.0-openjdk-headless
 
-graylog_packages_mongodb:
-- python3-libselinux
-- mongodb-org
-
 graylog_packages_enterprise: 
 - graylog-enterprise-plugins
-
-graylog_default_alias:
-- graylog.*
-- syslog.*
 
 
 ...

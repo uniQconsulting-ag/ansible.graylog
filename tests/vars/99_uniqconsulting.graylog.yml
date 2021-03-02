@@ -29,32 +29,5 @@ graylog_transport_email_from_email: "graylog@example.com"
 # OPTIONAL: graylog_jvm_graylog_heapmax: "{{ (ansible_memtotal_mb/2-1024)|round|int }}m" # default: Give it half the memory minus 1G
 # OPTIONAL: graylog_jvm_graylog_heap: "{{ (ansible_memtotal_mb/2-2048)|round|int }}m" # default: Give it half the memory minus 2G
 
-#################
-#   OS Basic
-#################
-
-osbasic_mail: "{{ graylog_transport_email_enabled }}"
-osbasic_mail_relay_host: "{{ graylog_transport_email_hostname }}"
-osbasic_sysadmin_email: 'support@domain.ch'
-osbasic_sender_domain: 'domain.ch'
-
-# OPTIONAL: osbasic_syslog: true
-# OPTIONAL: osbasic_syslog_remote_host: '@127.0.0.1:514'
-
-# OPTIONAL: osbasic_snmpd: false
-# OPTIONAL: osbasic_snmp_sourceip: '192.168.1.10'
-# OPTIONAL: osbasic_snmp_community_name: 'MyCommunity'
-
-# OPTIONAL: install_openvmtools: yes
-
-#################
-#    Firewall
-#################
-
-# OPTIONAL: To add ports, change like this:
-# additional_open_ports:
-# - port: 10050
-#   protocol: tcp
-
 ...
 
