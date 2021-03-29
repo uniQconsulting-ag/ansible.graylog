@@ -6,6 +6,7 @@
     path: /etc/graylog/server/server.conf
     regexp: '^root_password_sha2'
     line: root_password_sha2 = {{ graylog_admin_password|hash('sha256')}}
+  register: password_change_task
   notify: restart graylog
 
 - name: Check if password salt is present (check length)
@@ -20,7 +21,6 @@
     line: password_secret = {{ lookup('password', '/dev/null length=96 chars=ascii_letters') }}
   changed_when: false
   when: graylog_password_secret_length.stdout|int < 80
-  notify: restart graylog
 
 # Settings
 - name: enable elasticsearch shrads
@@ -178,12 +178,22 @@
     replace: "-Xmx{{ graylog_jvm_graylog_heapmax }} "
   notify: restart graylog
 
-# enable service
+
+
+
+- name: Enable and start Graylog server
+  service:
+    name: graylog-server
+    enabled: yes
+    state: restarted
+  when: password_change_task.changed
+  
 - name: Enable and start Graylog server
   service:
     name: graylog-server
     enabled: yes
     state: started
   notify: restart graylog
+  when: not password_change_task.changed
 
 ...
