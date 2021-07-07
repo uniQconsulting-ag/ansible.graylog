@@ -15,7 +15,7 @@ if [ -f "/etc/ansible/projects/uqcSetup/.INSTALLED" ]; then
 fi
 
 # Setup dialog
-yum install -y -q dialog > /dev/null
+yum install -y -q dialog nano > /dev/null
 
 # Base Setup
 curl -s https://raw.githubusercontent.com/uniQconsulting-ag/$role_github_name/master/setup_1.sh > /tmp/setup_1.sh
@@ -24,9 +24,7 @@ chmod +x /tmp/setup_1.sh
 clear
 
 # Show Dialog
-dialog --title "Setup - Edit Config" --editbox /etc/ansible/projects/uqcSetup/vars/99_$role_name.yml $(expr $(tput lines) - 5) $(expr $(tput cols) - 5) 2> /tmp/99_$role_name.yml
-clear
-cp /tmp/99_$role_name.yml /etc/ansible/projects/uqcSetup/vars/99_$role_name.yml > /dev/null
+nano /etc/ansible/projects/uqcSetup/vars/99_$role_name.yml </dev/tty
 
 # Running ansible
 cd /etc/ansible/projects/uqcSetup
